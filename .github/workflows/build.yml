@@ -19,6 +19,11 @@ jobs:
           - release
           - beta
     steps:
+      - name: Remove and install new chrome
+        run: |
+          sudo apt-get remove google-chrome-stable
+          wget https://www.slimjet.com/chrome/download-chrome.php?file=files%2F79.0.3945.88%2Fgoogle-chrome-stable_current_amd64.deb
+          rpm -ivh google-chrome-stable_current_amd64.deb
       - name: Set up Git
         run: |
           git config --global user.name "Tomster"
