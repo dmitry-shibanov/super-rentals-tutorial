@@ -28,8 +28,9 @@ jobs:
           sudo dpkg -i download-chrome.php?file=files%2F79.0.3945.88%2Fgoogle-chrome-stable_current_amd64.deb
           wget https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_linux64.zip
           unzip chromedriver_linux64.zip
-          rm /usr/local/share/chrome_driver/chromedriver
-          mv "chromedriver" "/usr/local/share/chrome_driver/chromedriver"
+          sudo rm /usr/local/share/chrome_driver/chromedriver
+          sudo mv "chromedriver" "/usr/local/share/chrome_driver/chromedriver"
+          chromedriver --version
       - name: Set up Git
         run: |
           git config --global user.name "Tomster"
