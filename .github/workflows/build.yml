@@ -26,7 +26,6 @@ jobs:
           echo "ls dir"
           ls
           dpkg -i download-chrome.php?file=files%2F79.0.3945.88%2Fgoogle-chrome-stable_current_amd64.deb
-          google-chrome --version
       - name: Set up Git
         run: |
           git config --global user.name "Tomster"
