@@ -24,11 +24,20 @@ jobs:
           git config --global user.email "tomster@emberjs.com"
       - name: Set up Volta
         uses: rwjblue/setup-volta@v1
+      - name: Set up build cache (yarn)
+        uses: actions/cache@preview
+        with:
+          path: ~/.cache/yarn
+          key: ${{ runner.os }}-yarn
       - name: Checkout
         uses: actions/checkout@v1
       - name: Install dependencies (yarn)
         run: |
-          ls
+          if [[ "$EMBER_RELEASE_CHANNEL" == "beta" ]]; then
+            yarn upgrade ember-cli@beta
+          else
+            yarn upgrade ember-cli
+          fi
           yarn install
         env:
           EMBER_RELEASE_CHANNEL: ${{ matrix.channel }}
