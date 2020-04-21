@@ -28,7 +28,7 @@ jobs:
         uses: actions/checkout@v1
       - name: Install dependencies (yarn)
         run: |
-          cd super-rentals-tutorial
+          ls
           yarn install
         env:
           EMBER_RELEASE_CHANNEL: ${{ matrix.channel }}
