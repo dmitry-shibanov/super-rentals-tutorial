@@ -31,10 +31,6 @@ jobs:
           key: ${{ runner.os }}-yarn
       - name: Checkout
         uses: actions/checkout@v1
-      - name: Install dependencies (apt-get)
-        run: |
-          sudo apt-get update -y
-          sudo apt-get install -y tree
       - name: Install dependencies (yarn)
         run: |
           if [[ "$EMBER_RELEASE_CHANNEL" == "beta" ]]; then
