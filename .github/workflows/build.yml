@@ -10,27 +10,14 @@ on:
 jobs:
   build:
     name: Build (${{ matrix.channel }})
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     env:
       CI: 'true'
     strategy:
       matrix:
         channel:
           - release
-          - beta
     steps:
-      - name: Remove and install new chrome
-        run: |
-          sudo apt-get remove google-chrome-stable
-          wget https://www.slimjet.com/chrome/download-chrome.php?file=files%2F80.0.3987.149%2Fgoogle-chrome-stable_current_amd64.deb
-          echo "ls dir"
-          ls
-          sudo dpkg -i download-chrome.php?file=files%2F80.0.3987.149%2Fgoogle-chrome-stable_current_amd64.deb
-          wget https://chromedriver.storage.googleapis.com/80.0.3987.16/chromedriver_linux64.zip
-          unzip chromedriver_linux64.zip
-          sudo rm /usr/local/share/chrome_driver/chromedriver
-          sudo mv "chromedriver" "/usr/local/share/chrome_driver/chromedriver"
-          chromedriver --version
       - name: Set up Git
         run: |
           git config --global user.name "Tomster"
